@@ -1,10 +1,12 @@
 import livros from '../models/Livro.js'
 
 class controlador {
-    static mostrarLivros(req, res) {
-        livros.find((err, livros)=> { //tratamento de erro
-            res.status(200).send(livros)
-        })
+    static async mostrarLivros(req, res) {
+        // livros.find((err, livros)=> { //tratamento de erro
+        //     res.status(200).json(livros)
+        // }) //mongoose nao suporta main callback nessa funcao
+        res.send(await livros.find())
+        // res.status(200).json(livros.find().toJSON())
     }
 
     static adicionarLivro(req, res) {

@@ -1,15 +1,9 @@
-var btn = document.querySelector("button")
+const btn = document.querySelector("#pesquisar")
 
-async function criando() {
-    const conect = await fetch("http://localhost:3000/livros", {
-        method: "POST",
-        headers: {"Content-type": "application/json"},
-        body: {
-                "titulo": "Biblia",
-                "autor": "Deus",
-                "genero": "religião"
-                }
-    })
+async function carregarLivros() {
+    const conecct = await fetch("http://localhost:3000/livros")
+    const conecctConvert = await conecct.json()
+    console.log(conecctConvert)
 }
 
-btn.addEventListener("click", criando)
+carregarLivros()

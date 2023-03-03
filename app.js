@@ -1,8 +1,6 @@
 import express from 'express'
 import router from './routes/rotas.js'
 import db from './config/conMongo.js'
-import livros from './models/Livro.js'
-import controlador from './controller/controller.js'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -13,8 +11,8 @@ db.once("open", ()=>{
 })
 
 // app.use(router)
-app.use(express.json(), router)
-// app.use(express.static('public'))
+app.use(express.json(), router, express.static('public'))
+// app.use()
 
 
 app.listen(PORT, ()=>{
