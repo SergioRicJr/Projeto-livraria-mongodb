@@ -21,6 +21,17 @@ class controlador {
         await livros.findByIdAndRemove(id)
         res.send(id)
     }
+
+    static async livrosFiltrados(req, res) {
+        let query = req.query.query
+
+        let expressao = new RegExp(query, "i")
+
+        const todosLivros = await livros.find()
+        const livrosSelecionados = todosLivros.filter(livro=> expressao.test(livro.titulo)|| expressao.test(livro.autor))
+
+        res.send(livrosSelecionados)
+    }
 }
 
 export default controlador

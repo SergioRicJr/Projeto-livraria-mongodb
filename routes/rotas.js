@@ -5,8 +5,10 @@ const router = express.Router()
 
 router
     //.get("/", (req, res) => {res.send("Primeira página")})
+    .get("/pesquisa", controlador.livrosFiltrados)
     .get("/livros", controlador.mostrarLivros)
     .post("/livros", controlador.adicionarLivro)
     .delete("/livros/:id", controlador.deletaLivro)
+
 
 export default router
