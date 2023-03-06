@@ -79,5 +79,16 @@ h2 {
 }
 
 .n_livro {
-    height: 84%;
+    height: 10%;
+    display: flex;
+    padding-top: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 93%;
+    width: 100%;
+}
+
+.n_livro p {
+    width: 90%;
+    text-align: center;
 }
