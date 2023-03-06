@@ -30,11 +30,34 @@ function CriaElementos(id, autor, genero, titulo) {
 
     var idLivro = document.createElement("div")
     idLivro.classList.add("n_livro")
-    var idInterno = document.createTextNode(id)
-    idLivro.appendChild(idInterno)
+
+    var containerIcon = document.createElement("div")
+    containerIcon.classList.add("container-icon")
+    var icon = document.createElement("i")
+    icon.classList.add("fa-solid")
+    icon.classList.add("fa-ellipsis-vertical")
+    containerIcon.appendChild(icon)
+
+    idLivro.appendChild(containerIcon)
+
+    var menuDrop = document.createElement("div")
+    menuDrop.classList.add("menu-dropdown")
+    menuDrop.classList.add("hide")
+    var listaFunc = document.createElement("ul")
+    var btnDeletar = document.createElement("li")
+    btnDeletar.classList.add("btnDelete")
+    btnDeletar.innerText = "Delete"
+    listaFunc.appendChild(btnDeletar)
+    menuDrop.appendChild(listaFunc)
+
+    idLivro.appendChild(menuDrop)
 
 
-    
+    // var idInterno = document.createTextNode(id)
+    // idLivro.appendChild(idInterno)
+
+
+
 
     var autorLivro = document.createElement("div")
     autorLivro.classList.add("autor")
