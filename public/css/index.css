@@ -122,6 +122,24 @@ ul {
     text-decoration: underline;
 }
 
+.menu-dropdown-edicao {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    position: absolute;
+    right: 4%;
+    top: 10%;
+}
+
+.menu-dropdown-edicao input {
+    width: 100%;
+}
+
+
+
+.menu-dropdown-edicao button {
+    cursor: pointer;
+}
 
 /* 
 .menu-dropdown li::after {

@@ -21,7 +21,7 @@ html.addEventListener("click", (e)=>{
         menuDrop.toggleClass("hide")
     }
 
-    if (element.classList.contains("btnDelete")) {
+    else if (element.classList.contains("btnDelete")) {
         console.log("btn deletar")
         console.log(element.closest(".Livro").id)
         var livroSelecionado = element.closest(".Livro")
@@ -29,6 +29,12 @@ html.addEventListener("click", (e)=>{
 
         deletarLivroSelecionado(idLivroSelecionado)
         livroSelecionado.remove()
+    }
+
+    else if (element.classList.contains("btnEdit")) {
+        $(element).next().toggleClass("hide")
+        // var menuDrop = element.closest(".menu-dropdown")
+        // menuDrop.classList.toggle("hide")
     }
 })
 

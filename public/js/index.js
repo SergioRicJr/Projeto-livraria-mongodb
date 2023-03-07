@@ -46,18 +46,19 @@ function CriaElementos(id, autor, genero, titulo) {
     var listaFunc = document.createElement("ul")
     var btnDeletar = document.createElement("li")
     btnDeletar.classList.add("btnDelete")
-    btnDeletar.innerText = "Delete"
+    btnDeletar.innerText = "Deletar"
     listaFunc.appendChild(btnDeletar)
+    var btnEditar = document.createElement("li")
+    btnEditar.classList.add("btnEdit")
+    btnEditar.innerText = "Editar"
+    listaFunc.appendChild(btnEditar)
+
     menuDrop.appendChild(listaFunc)
 
     idLivro.appendChild(menuDrop)
 
-
     // var idInterno = document.createTextNode(id)
     // idLivro.appendChild(idInterno)
-
-
-
 
     var autorLivro = document.createElement("div")
     autorLivro.classList.add("autor")
