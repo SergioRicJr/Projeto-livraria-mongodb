@@ -19,9 +19,23 @@ html.addEventListener("click", (e)=>{
     if (element.classList.contains("container-icon")) {
         var menuDrop = $(element).next()
         menuDrop.toggleClass("hide")
+        var menuEdicao = $(element).next().next()
+        menuEdicao.addClass("hide")
+    } 
+//mudar linha abaixo p clickOutsideThisElement p reduzir linha
+    if (!element.classList.contains("container-icon") && !element.classList.contains("btnEdit") && !element.classList.contains("input-titulo-edit") && !element.classList.contains("input-autor-edit") && !element.classList.contains("salva-alteracao")) {
+        $(".menu-dropdown").addClass("hide")
+        $(".menu-dropdown-edicao").addClass("hide")
     }
 
-    else if (element.classList.contains("btnDelete")) {
+    if (element.classList.contains("salva-alteracao")) {
+        let inputTitulo = $(element).closest(".menu-dropdown-edicao").find(".input-titulo-edit").val()
+        let inputAutor =  $(element).closest(".menu-dropdown-edicao").find(".input-autor-edit").val()
+        console.log(inputTitulo)
+        console.log(inputAutor)
+    }
+
+    if (element.classList.contains("btnDelete")) {
         console.log("btn deletar")
         console.log(element.closest(".Livro").id)
         var livroSelecionado = element.closest(".Livro")
@@ -31,11 +45,18 @@ html.addEventListener("click", (e)=>{
         livroSelecionado.remove()
     }
 
-    else if (element.classList.contains("btnEdit")) {
-        $(element).next().toggleClass("hide")
+    if (element.classList.contains("btnEdit")) {
+        var menuDropEdit = $(element).closest(".menu-dropdown").next()
+        menuDropEdit.toggleClass("hide")
         // var menuDrop = element.closest(".menu-dropdown")
         // menuDrop.classList.toggle("hide")
-    }
+        var inputTitulo = menuDropEdit.find(".input-titulo-edit")
+        var inputAutor = menuDropEdit.find(".input-autor-edit")
+        // inputTitulo = inputTitulo.find()
+        // console.log(inputTitulo)
+        // console.log(inputAutor)
+    } 
+
 })
 
 
