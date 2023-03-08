@@ -39,8 +39,6 @@ html.addEventListener("click", (e)=>{
         let menuDropOption = $(menuEdicao).prev()
         menuDropOption.addClass("hide")
         const id = element.closest(".Livro").id
-        console.log(inputTitulo)
-        console.log(inputAutor)
         conexaoApi.mudaLivro(id, inputTitulo, inputAutor)
     }
 

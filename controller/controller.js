@@ -36,10 +36,14 @@ class controlador {
     static async atualizarLivro(req, res) {
         let id = req.params.id
         let atualizacoes = req.body
+        console.log(atualizacoes)
         // let autorNovo = req.body.autorNovo
-
-        livros.findByIdAndUpdate(id, {$set: atualizacoes})
-
+    try {
+        await livros.findOneAndUpdate({_id: id}, atualizacoes)
+        res.send("livro atualizado com sucesso")
+    } catch(err) {
+        res.send(err.message)
+    }
     }
 }
 

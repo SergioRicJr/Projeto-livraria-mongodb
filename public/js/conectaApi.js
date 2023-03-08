@@ -1,3 +1,4 @@
+import { reiniciarLivrosSite } from "./index.js"
 class conexaoApi {
     static async listarLivros() {
         const connect = await fetch("http://localhost:3000/livros")
@@ -14,16 +15,22 @@ class conexaoApi {
     }
 
     static async mudaLivro(id, tituloNovo, autorNovo) {
-        await fetch(`http://localhost:3000/atualizar/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                titulo: tituloNovo,
-                autor: autorNovo
+        try {
+            const conn = await fetch(`http://localhost:3000/atualizar/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify({
+                    titulo: tituloNovo,
+                    autor: autorNovo
+                })
             })
-        })
+            await reiniciarLivrosSite()
+            console.log("Alteração feita com sucesso")
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 }
 

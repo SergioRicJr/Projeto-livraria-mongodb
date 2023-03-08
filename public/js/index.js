@@ -67,12 +67,12 @@ function CriaElementos(id, autor, genero, titulo) {
 
     var inputTituloNovo = document.createElement("input")
     inputTituloNovo.classList.add("input-titulo-edit")
-    inputTituloNovo.placeholder = "titulo"
+    inputTituloNovo.value = titulo
     menuDropAtualizar.appendChild(inputTituloNovo)
 
     var inputAutorNovo = document.createElement("input")
     inputAutorNovo.classList.add("input-autor-edit")
-    inputAutorNovo.placeholder = "autor"
+    inputAutorNovo.value = autor
     menuDropAtualizar.appendChild(inputAutorNovo)
 
     var buttonSalvaAlteracao = document.createElement("button")
@@ -118,6 +118,15 @@ async function MostrarLivros() {
 
 MostrarLivros()
 
+async function reiniciarLivrosSite() {
+    const areaLivros = document.querySelectorAll("#area-livros > *") 
+    
+        for (let x of areaLivros) {
+            x.remove()
+        }
+        MostrarLivros()
+}
+
 btn.addEventListener("click", async ()=>{
     var inputValue = input.value
     inputValue = inputValue.trim()
@@ -145,11 +154,8 @@ btn.addEventListener("click", async ()=>{
             CriaElementos(id, autor, genero, titulo)
         }
     } else {
-        const areaLivros = document.querySelectorAll("#area-livros > *") 
-    
-        for (let x of areaLivros) {
-            x.remove()
-        }
-        MostrarLivros()
+        reiniciarLivrosSite()
     }
 })
+
+export {reiniciarLivrosSite}
