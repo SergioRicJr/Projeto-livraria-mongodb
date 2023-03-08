@@ -27,4 +27,6 @@ class conexaoApi {
     }
 }
 
+
+
 export default conexaoApi

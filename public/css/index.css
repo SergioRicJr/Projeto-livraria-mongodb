@@ -16,17 +16,37 @@ header {
     height: 10%;
 }
 
+.menu-fechado {
+    font-size: 1.5em;
+    padding-right: 15%;
+    cursor: pointer;
+}
+
+.menu-aberto {
+    font-size: 1.5em;
+    padding-right: 15%;
+    cursor: pointer;
+}
+
+.container-icon-menu-he {
+    width: 10.6%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
 h1 {
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 35%;
+    width: 33%;
     height: 100%;
     margin-left: 6.4%;
 }
 
 #area-pesq {
-    width: 30%;
+    width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -34,7 +54,7 @@ h1 {
 }
 
 input {
-    width: 60%;
+    width: 50%;
     height: 40%;
     padding: 3px;
 }
@@ -46,10 +66,59 @@ input {
 main {
     flex-wrap: wrap;
     display: flex;
-    margin: 6.4%;
-    margin-top: 3%;
-    margin-bottom: 0;
+    padding: 6.4%;
+    padding-top: 3%;
+    padding-bottom: 0;
     gap: 15px;
+    position: relative;
+    height: 90%;
+}
+
+#menu-lateral-adicionar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blanchedalmond;
+    width: 25%;
+    height: 100%;
+    z-index: 1;
+}
+
+#menu-lateral-adicionar h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 20%;
+}
+
+.input-menuLateral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20%;
+
+}
+
+
+
+#menu-input-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40%;
+    gap: 8%;
+}
+
+#menu-lateral-adicionar input {
+    height: 50%;
+    width: 80%;
+}
+
+#menu-lateral-adicionar select {
+    width: 80%;
 }
 
 .Livro {
@@ -135,8 +204,6 @@ ul {
     width: 100%;
 }
 
-
-
 .menu-dropdown-edicao button {
     cursor: pointer;
 }
@@ -158,6 +225,6 @@ ul {
     display: none !important;
 }
 
-i {
+.Livro i {
     pointer-events: none;
 }
