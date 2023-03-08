@@ -32,6 +32,15 @@ class controlador {
 
         res.send(livrosSelecionados)
     }
+
+    static async atualizarLivro(req, res) {
+        let id = req.params.id
+        let atualizacoes = req.body
+        // let autorNovo = req.body.autorNovo
+
+        livros.findByIdAndUpdate(id, {$set: atualizacoes})
+
+    }
 }
 
 export default controlador

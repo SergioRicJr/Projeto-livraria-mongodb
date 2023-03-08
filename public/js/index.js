@@ -2,22 +2,26 @@ import conexaoApi from "./conectaApi.js"
 const btn = document.querySelector("#pesquisar")
 const input = document.querySelector("#pesquisa")
 {/* <div class="Livro">
-        <div class="card-livro">
-            <div class="n_livro">
-                <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
-                <div class="menu-dropdown">
-                    <ul>
-                        <li class="btnDelete">Deletar</li>
-                        <li>Funcao2</li>
-                        <li>Funcao3</li>
-                    </ul>
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
                 </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
             </div>
-            <div class="autor">autor</div>
-            <div class="genero">genero</div>
-        </div>
-        <h2>Titulo do livro</h2>
-    </div> */}
+            <h2>Titulo do livro</h2>
+        </div> */}
 function CriaElementos(id, autor, genero, titulo) {
     const areaLivros = document.querySelector("#area-livros")
     
@@ -56,6 +60,27 @@ function CriaElementos(id, autor, genero, titulo) {
     menuDrop.appendChild(listaFunc)
 
     idLivro.appendChild(menuDrop)
+
+    var menuDropAtualizar = document.createElement("div")
+    menuDropAtualizar.classList.add("menu-dropdown-edicao")
+    menuDropAtualizar.classList.add("hide")
+
+    var inputTituloNovo = document.createElement("input")
+    inputTituloNovo.classList.add("input-titulo-edit")
+    inputTituloNovo.placeholder = "titulo"
+    menuDropAtualizar.appendChild(inputTituloNovo)
+
+    var inputAutorNovo = document.createElement("input")
+    inputAutorNovo.classList.add("input-autor-edit")
+    inputAutorNovo.placeholder = "autor"
+    menuDropAtualizar.appendChild(inputAutorNovo)
+
+    var buttonSalvaAlteracao = document.createElement("button")
+    buttonSalvaAlteracao.classList.add("salva-alteracao")
+    buttonSalvaAlteracao.innerText = "Salvar"
+    menuDropAtualizar.appendChild(buttonSalvaAlteracao)
+
+    idLivro.appendChild(menuDropAtualizar)
 
     // var idInterno = document.createTextNode(id)
     // idLivro.appendChild(idInterno)

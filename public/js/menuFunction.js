@@ -1,3 +1,4 @@
+import conexaoApi from "./conectaApi.js"
 const html = document.querySelector("html")
 
 // console.log($("html"))
@@ -12,6 +13,8 @@ async function deletarLivroSelecionado(id) {
             console.log(err.message)
         }
 }
+
+
 
 html.addEventListener("click", (e)=>{
 
@@ -31,8 +34,14 @@ html.addEventListener("click", (e)=>{
     if (element.classList.contains("salva-alteracao")) {
         let inputTitulo = $(element).closest(".menu-dropdown-edicao").find(".input-titulo-edit").val()
         let inputAutor =  $(element).closest(".menu-dropdown-edicao").find(".input-autor-edit").val()
+        let menuEdicao = element.parentElement
+        menuEdicao.classList.add("hide")
+        let menuDropOption = $(menuEdicao).prev()
+        menuDropOption.addClass("hide")
+        const id = element.closest(".Livro").id
         console.log(inputTitulo)
         console.log(inputAutor)
+        conexaoApi.mudaLivro(id, inputTitulo, inputAutor)
     }
 
     if (element.classList.contains("btnDelete")) {
