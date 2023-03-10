@@ -1,4 +1,12 @@
+//IMPLEMENTAR DOTENV
+//IMPLEMENTAR HASH
+import {scryptSync, timingSafeEqual} from 'crypto'
 import livros from '../models/Livro.js'
+import User from '../models/User.js'
+import dotenv from 'dotenv'
+import jsonwebtoken from 'jsonwebtoken'
+
+dotenv.config()
 
 class controlador {
     static async mostrarLivros(req, res) {
@@ -44,6 +52,70 @@ class controlador {
     } catch(err) {
         res.send(err.message)
     }
+    }
+
+    static async cadastrarUsuario(req, res) {
+        //está sendo passado a chave e com base nisso o valor é retirado independente da ordem
+        //adicionar validação de regex no 
+        const {name, email, password, confirmPassword} = req.body //
+
+         // validations
+        if (!name) {
+            return res.status(422).json({ msg: "O nome é obrigatório!" });
+        }
+
+        if (!email) {
+            return res.status(422).json({ msg: "O email é obrigatório!" });
+        }
+
+        if (!password) {
+            return res.status(422).json({ msg: "A senha é obrigatória!" });
+        }
+
+        if (password != confirmPassword) {
+            return res
+            .status(422)
+            .json({ msg: "A senha e a confirmação precisam ser iguais!" });
+        }
+
+        const userExists = await User.findOne({ email: email });
+
+        if (userExists) {
+            return res.status(422).json({ msg: "Por favor, utilize outro e-mail!" });
+        }
+
+        const passwordHash = scryptSync(password, process.env.CRYPTO_SAL, 64).toString('hex')
+        
+        const novoUsuario = new User({
+            name: name,
+            email: email,
+            passwordHash: passwordHash
+        })
+
+        try {
+            await novoUsuario.save()
+            res.status(201).send("Livro cadastrado com sucesso")
+        } catch(err) {
+            res.status(422).send("Não foi possivel salvar usuário " + err.message)
+        }
+    }
+
+    static async loginUser(req, res) {
+        const {email, password} = req.body
+        const user = await User.findOne({email:email})
+
+        if (user) {
+            let passwordGuardada = user.passwordHash
+            passwordGuardada = Buffer.from(passwordGuardada, 'hex')
+            const passwordHash = scryptSync(password, process.env.CRYPTO_SAL, 64)
+            const teste = timingSafeEqual(passwordHash, passwordGuardada)
+            if (teste) {
+                const token = jsonwebtoken.sign({
+                    id: user._id
+                }, process.env.CHAVE_TOKEN, {expiresIn: 600})
+                res.status(200).json({token: token})
+            }
+        }
     }
 }
 
