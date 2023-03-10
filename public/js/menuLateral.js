@@ -28,5 +28,5 @@ btn.addEventListener("click", async ()=>{
                 "genero": genero
                 })
     })
-    reiniciarLivrosSite()
+    reiniciarLivrosSite() //substituir esse metodo por append de livro na area de livro
 })

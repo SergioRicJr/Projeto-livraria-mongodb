@@ -124,7 +124,10 @@ async function reiniciarLivrosSite() {
     const areaLivros = document.querySelectorAll("#area-livros > *") 
     
         for (let x of areaLivros) {
-            x.remove()
+            if (x.id != "menu-lateral-adicionar") {
+                x.remove()
+            }
+            
         }
         MostrarLivros()
 }
