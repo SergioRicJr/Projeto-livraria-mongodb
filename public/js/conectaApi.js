@@ -1,7 +1,11 @@
 import { reiniciarLivrosSite } from "./livraria.js"
 class conexaoApi {
     static async listarLivros() {
-        const connect = await fetch("http://localhost:3000/livros")
+        const tokenGuardad = JSON.parse(localStorage.getItem("authorization"))
+
+        const connect = await fetch("http://localhost:3000/livros",{
+            headers: {"authorization": tokenGuardad.token}
+        })
     
         const connectConvert = await connect.json()
     

@@ -112,10 +112,14 @@ class controlador {
             if (teste) {
                 const token = jsonwebtoken.sign({
                     id: user._id
-                }, process.env.CHAVE_TOKEN, {expiresIn: 600})
+                }, process.env.CHAVE_TOKEN)
                 res.status(200).json({token: token})
+            } else {
+                console.log("erro")
+                res.send("erro")
             }
         }
+        
     }
 }
 

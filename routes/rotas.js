@@ -7,7 +7,7 @@ const router = express.Router()
 router
     //.get("/", (req, res) => {res.send("Primeira página")})
     .get("/pesquisa", controlador.livrosFiltrados)
-    .get("/livros", controlador.mostrarLivros)
+    .get("/livros", validaToken, controlador.mostrarLivros)
     .post("/livros", controlador.adicionarLivro)
     .post("/cadastro", controlador.cadastrarUsuario)
     .post("/login", controlador.loginUser)

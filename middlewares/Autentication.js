@@ -6,7 +6,7 @@ dotenv.config()
 
 function validaToken(req, res, next) {
     const token = req.headers.authorization
-    
+
     console.log(token)
     const validacao = jsonwebtoken.verify(token, process.env.CHAVE_TOKEN)
     

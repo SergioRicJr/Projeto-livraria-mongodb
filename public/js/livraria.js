@@ -1,27 +1,7 @@
 import conexaoApi from "./conectaApi.js"
 const btn = document.querySelector("#pesquisar")
 const input = document.querySelector("#pesquisa")
-{/* <div class="Livro">
-            <div class="card-livro">
-                <div class="n_livro">
-                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
-                    <div class="menu-dropdown">
-                        <ul>
-                            <li class="btnDelete">Deletar</li>
-                            <li class="btnEdit">Editar</li>
-                        </ul>
-                    </div>
-                    <div class="menu-dropdown-edicao hide">
-                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
-                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
-                        <button class="salva-alteracao">Salvar</button>
-                    </div>
-                </div>
-                <div class="autor">autor</div>
-                <div class="genero">genero</div>
-            </div>
-            <h2>Titulo do livro</h2>
-        </div> */}
+
 function CriaElementos(id, autor, genero, titulo) {
     const areaLivros = document.querySelector("#area-livros")
     
@@ -118,11 +98,17 @@ async function MostrarLivros() {
     }
 }
 
-MostrarLivros()
+const tokenGuardado = JSON.parse(localStorage.getItem("authorization"))
+if (tokenGuardado.token){
+    MostrarLivros()
+} else {
+    console.log("erro")
+}
+
 
 async function reiniciarLivrosSite() {
     const areaLivros = document.querySelectorAll("#area-livros > *") 
-    
+
         for (let x of areaLivros) {
             if (x.id != "menu-lateral-adicionar") {
                 x.remove()
