@@ -68,10 +68,12 @@ function CriaElementos(id, autor, genero, titulo) {
     var inputTituloNovo = document.createElement("input")
     inputTituloNovo.classList.add("input-titulo-edit")
     inputTituloNovo.value = titulo
+    inputTituloNovo.value = titulo
     menuDropAtualizar.appendChild(inputTituloNovo)
 
     var inputAutorNovo = document.createElement("input")
     inputAutorNovo.classList.add("input-autor-edit")
+    inputAutorNovo.value = autor
     inputAutorNovo.value = autor
     menuDropAtualizar.appendChild(inputAutorNovo)
 

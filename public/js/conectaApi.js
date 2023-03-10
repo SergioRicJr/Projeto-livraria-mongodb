@@ -1,4 +1,4 @@
-import { reiniciarLivrosSite } from "./index.js"
+import { reiniciarLivrosSite } from "./livraria.js"
 class conexaoApi {
     static async listarLivros() {
         const connect = await fetch("http://localhost:3000/livros")

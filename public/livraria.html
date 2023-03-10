@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/livraria.css">
+    <script src="./js/livraria.js" type="module" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./js/menuFunction.js" defer type="module"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="./js/menuLateral.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Livraria do Sergio</h1>
+        <div id="area-pesq">
+            <input type="text" name="" id="pesquisa"></input>
+            <button id="pesquisar">Pesquisar</button>
+        </div>
+        <div class="container-icon-menu-he">
+            <i class="fa-solid fa-bars menu-fechado"></i>
+        </div>
+    </header>
+    <main id="area-livros">
+        <div id="menu-lateral-adicionar" class="hide">
+            <h1>Adicionar livro</h1>
+            <div id="menu-input-button"> 
+                <div class="input-menuLateral">
+                    <label for="titulo">Titulo:</label>
+                    <input type="text" name="titulo" id="titulo-input-menu"></input>
+                </div>
+                <div class="input-menuLateral">
+                    <label for="">Autor:</label>
+                    <input type="text" name="" id="autor-input-menu"></input>
+                </div>
+                <select name="" id="genero-input-menu">
+                    <option value="Ação">Ação</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Ficção cíentifica">Ficção cíentifica</option>
+                    <option value="Fantasia">Fantasia</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Informática">Informática</option>
+                </select>
+                <button id="button-adicionar-livro">
+                    Adicioncar
+                </button>
+            </div>
+        </div>
+        <!-- <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div> 
+        <div class="Livro">
+            <div class="card-livro">
+                <div class="n_livro">
+                    <div class="container-icon"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    <div class="menu-dropdown">
+                        <ul>
+                            <li class="btnDelete">Deletar</li>
+                            <li class="btnEdit">Editar</li>
+                        </ul>
+                    </div>
+                    <div class="menu-dropdown-edicao hide">
+                        <input type="text" name="input-titulo-edit" class="input-titulo-edit" placeholder="titulo"></input>
+                        <input type="text" name="input-autor-edit" class="input-autor-edit" placeholder="autor"></input>
+                        <button class="salva-alteracao">Salvar</button>
+                    </div>
+                </div>
+                <div class="autor">autor</div>
+                <div class="genero">genero</div>
+            </div>
+            <h2>Titulo do livro</h2>
+        </div>  -->
+    </main>
+</body>
+</html>
