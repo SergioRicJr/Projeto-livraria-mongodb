@@ -5,6 +5,7 @@ import livros from '../models/Livro.js'
 import User from '../models/User.js'
 import dotenv from 'dotenv'
 import jsonwebtoken from 'jsonwebtoken'
+import criaColecaoUser from '../models/Livro.js'
 
 dotenv.config()
 
@@ -13,6 +14,8 @@ class controlador {
         // livros.find((err, livros)=> { //tratamento de erro
         //     res.status(200).json(livros)
         // }) //mongoose nao suporta main callback nessa funcao
+        // const idUser = req.headers.authorization
+        // const collection = criaColecaoUser(idUser)
         res.send(await livros.find())
         // res.status(200).json(livros.find().toJSON())
     }
@@ -113,11 +116,13 @@ class controlador {
                 const token = jsonwebtoken.sign({
                     id: user._id
                 }, process.env.CHAVE_TOKEN)
+                // const colecao = criaColecaoUser(user._id)
                 res.status(200).json({token: token})
             } else {
                 console.log("erro")
                 res.send("erro")
             }
+            
         }
         
     }

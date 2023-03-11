@@ -5,8 +5,10 @@ const html = document.querySelector("html")
 
 async function deletarLivroSelecionado(id) {
         try {
+            const tokenGuardad = JSON.parse(localStorage.getItem("authorization"))
             const conn = await fetch(`http://localhost:3000/livros/${id}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {"authorization": tokenGuardad.token}
             })
             console.log("Livro deletado com sucesso")
         } catch(err) {

@@ -18,10 +18,10 @@ btn.addEventListener("click", async ()=>{
     var titulo = inputTitulo.value
     var autor = inputAutor.value
     var genero = select[select.selectedIndex].value
-
+    const tokenGuardad = JSON.parse(localStorage.getItem("authorization"))
     await fetch("http://localhost:3000/livros", {
         method: "POST",
-        headers: {"Content-type": "application/json"},
+        headers: {"Content-type": "application/json", "authorization": tokenGuardad.token},
         body: JSON.stringify({
                 "titulo": titulo,
                 "autor": autor,
