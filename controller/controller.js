@@ -1,56 +1,77 @@
 //IMPLEMENTAR DOTENV
 //IMPLEMENTAR HASH
 import {scryptSync, timingSafeEqual} from 'crypto'
-import livros from '../models/Livro.js'
+// import livros from '../models/Livro.js'
 import User from '../models/User.js'
 import dotenv from 'dotenv'
 import jsonwebtoken from 'jsonwebtoken'
 import criaColecaoUser from '../models/Livro.js'
+var collection
 
 dotenv.config()
-
+//declarar model apenas uma vez usando orientacao a objetos, quando logar 
 class controlador {
+    static async iniciarModel(req, res) {
+        const idUserToken = req.headers.authorization
+        const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
+        this.collection = criaColecaoUser(idUser) //testar o uso de this em metodos estaticos
+        //consertar declaracao de model livros com base no id de usuario,  primeira vez funciona, apos da erro por estar redefinindo model
+    }
+
     static async mostrarLivros(req, res) { //retornar livro de cada coleção de usuário
         // livros.find((err, livros)=> { //tratamento de erro
         //     res.status(200).json(livros)
         // }) //mongoose nao suporta main callback nessa funcao
-        // const idUser = req.headers.authorization
-        // const collection = criaColecaoUser(idUser)
-        res.send(await livros.find())
+        const idUserToken = req.headers.authorization
+        const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
+        collection = criaColecaoUser(idUser)
+        res.send(await collection.find())
         // res.status(200).json(livros.find().toJSON())
     }
 
     static adicionarLivro(req, res) {
-        let livro = new livros(req.body);
-        livro.save()
+        const idUserToken = req.headers.authorization
+        const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
+        collection = criaColecaoUser(idUser)
+        let livro = new collection(req.body);
+        collection.save()
         res.send(livro)
     }
 
     static async deletaLivro(req, res) {
+        const idUserToken = req.headers.authorization
+        const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
+        collection = criaColecaoUser(idUser)
         let id = req.params.id
 
-        await livros.findByIdAndRemove(id)
+        await collection.findByIdAndRemove(id)
         res.send(id)
     }
 
     static async livrosFiltrados(req, res) {
+        const idUserToken = req.headers.authorization
+        const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
+        collection = criaColecaoUser(idUser)
         let query = req.query.query
 
         let expressao = new RegExp(query, "i")
 
-        const todosLivros = await livros.find()
+        const todosLivros = await collection.find()
         const livrosSelecionados = todosLivros.filter(livro=> expressao.test(livro.titulo)|| expressao.test(livro.autor))
 
         res.send(livrosSelecionados)
     }
 
     static async atualizarLivro(req, res) {
+        const idUserToken = req.headers.authorization
+        const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
+        collection = criaColecaoUser(idUser)
         let id = req.params.id
         let atualizacoes = req.body
         console.log(atualizacoes)
         // let autorNovo = req.body.autorNovo
     try {
-        await livros.findOneAndUpdate({_id: id}, atualizacoes)
+        await collection.findOneAndUpdate({_id: id}, atualizacoes)
         res.send("livro atualizado com sucesso")
     } catch(err) {
         res.send(err.message)
