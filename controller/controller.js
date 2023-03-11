@@ -9,7 +9,7 @@ import jsonwebtoken from 'jsonwebtoken'
 dotenv.config()
 
 class controlador {
-    static async mostrarLivros(req, res) {
+    static async mostrarLivros(req, res) { //retornar livro de cada coleção de usuário
         // livros.find((err, livros)=> { //tratamento de erro
         //     res.status(200).json(livros)
         // }) //mongoose nao suporta main callback nessa funcao

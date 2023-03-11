@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 //criacao de schema para o banco de dados
+
+// Transformar em função para Criar colecao para cada usuario na hora de cadastrar
 const livroschema = new mongoose.Schema({
     "id": {type:String},
     "titulo": {type: String, required: true},
