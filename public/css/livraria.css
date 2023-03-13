@@ -66,12 +66,20 @@ input {
 main {
     flex-wrap: wrap;
     display: flex;
-    padding: 6.4%;
+    justify-content: center;
     padding-top: 3%;
     padding-bottom: 0;
     gap: 15px;
     position: relative;
     height: 90%;
+}
+
+.Livro {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #menu-lateral-adicionar {
@@ -121,13 +129,7 @@ main {
     width: 80%;
 }
 
-.Livro {
-    width: 200px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 
 h2 {
     font-size: 15px;
@@ -140,6 +142,7 @@ h2 {
 
 .card-livro {
     display: flex;
+    /* flex: 1; */
     flex-direction: column;
     align-items: center;
     background-color: blueviolet;
