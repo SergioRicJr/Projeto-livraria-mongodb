@@ -2,7 +2,7 @@ import conexaoApi from "./conectaApi.js"
 const btn = document.querySelector("#pesquisar")
 const input = document.querySelector("#pesquisa")
 
-function CriaElementos(id, autor, genero, titulo) {
+function CriaElementos(id, autor, genero, titulo, img) {
     const areaLivros = document.querySelector("#area-livros")
     
     var areaLivro = document.createElement("div")
@@ -11,6 +11,7 @@ function CriaElementos(id, autor, genero, titulo) {
 
     var cardLivro = document.createElement("div")
     cardLivro.classList.add('card-livro')
+    cardLivro.style.backgroundImage= `url('${img}')`
 
     var idLivro = document.createElement("div")
     idLivro.classList.add("n_livro")
@@ -94,7 +95,7 @@ async function MostrarLivros() {
     const livros = await conexaoApi.listarLivros()
 
     for (let i of await livros) {
-        CriaElementos(i._id, i.autor, i.genero, i.titulo)
+        CriaElementos(i._id, i.autor, i.genero, i.titulo, i.img)
     }
 }
 
