@@ -47,7 +47,7 @@ h1 {
     align-items: center;
     width: 33%;
     height: 100%;
-    margin-left: 6.4%;
+    margin-left: 5%;
 }
 
 #area-pesq {
@@ -71,13 +71,16 @@ input {
 main {
     flex-wrap: wrap;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    margin: 0 auto;
+    max-width: 90%;
     padding-top: 3%;
     padding-bottom: 0;
     gap: 15px;
     position: relative;
     height: 90%;
 }
+
 
 .Livro {
     width: 200px;
