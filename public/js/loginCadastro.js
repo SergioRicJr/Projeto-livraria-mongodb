@@ -59,8 +59,8 @@ btnLogin.addEventListener("click", async ()=>{
     try {
         const token = await logarUsuario(email, password)
         localStorage.setItem("authorization", JSON.stringify(token))
-        // window.location.href = "http://localhost:3000/livraria.html"
-    } catch(err) {
-        console.log(err.message)
+        window.location.href = "http://localhost:3000/livraria.html"
+    } catch {
+        console.log("Email ou senha incorretos")
     }
 })

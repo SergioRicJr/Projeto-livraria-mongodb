@@ -23,6 +23,7 @@ function criaColecaoUser(idUser) { //precisa ser definido so uma vez
         "autor": {type: String, required: true},
         "genero": {type: String, required: true}
     })
+    mongoose.models = {} // para impedir erro de subscrição do model existente
     //criacao de colecao e definicao de schema p ele
     const collectionLivro = mongoose.model(`${idUser}`, livroschema)
     return collectionLivro

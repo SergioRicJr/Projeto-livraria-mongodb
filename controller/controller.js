@@ -6,17 +6,16 @@ import User from '../models/User.js'
 import dotenv from 'dotenv'
 import jsonwebtoken from 'jsonwebtoken'
 import criaColecaoUser from '../models/Livro.js'
-var collection
 
 dotenv.config()
 //declarar model apenas uma vez usando orientacao a objetos, quando logar 
 class controlador {
-    static async iniciarModel(req, res) {
-        const idUserToken = req.headers.authorization
-        const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
-        this.collection = criaColecaoUser(idUser) //testar o uso de this em metodos estaticos
-        //consertar declaracao de model livros com base no id de usuario,  primeira vez funciona, apos da erro por estar redefinindo model
-    }
+    // static async iniciarModel(req, res) {
+    //     const idUserToken = req.headers.authorization
+    //     const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
+    //     collection = criaColecaoUser(idUser) //testar o uso de this em metodos estaticos
+    //     //consertar declaracao de model livros com base no id de usuario,  primeira vez funciona, apos da erro por estar redefinindo model
+    // }
 
     static async mostrarLivros(req, res) { //retornar livro de cada coleção de usuário
         // livros.find((err, livros)=> { //tratamento de erro
@@ -24,7 +23,7 @@ class controlador {
         // }) //mongoose nao suporta main callback nessa funcao
         const idUserToken = req.headers.authorization
         const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
-        collection = criaColecaoUser(idUser)
+        const collection = criaColecaoUser(idUser)
         res.send(await collection.find())
         // res.status(200).json(livros.find().toJSON())
     }
@@ -32,16 +31,16 @@ class controlador {
     static adicionarLivro(req, res) {
         const idUserToken = req.headers.authorization
         const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
-        collection = criaColecaoUser(idUser)
+        const collection = criaColecaoUser(idUser) //  || mongoose.models.idUser
         let livro = new collection(req.body);
-        collection.save()
+        livro.save()
         res.send(livro)
     }
 
     static async deletaLivro(req, res) {
         const idUserToken = req.headers.authorization
         const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
-        collection = criaColecaoUser(idUser)
+        const collection = criaColecaoUser(idUser)
         let id = req.params.id
 
         await collection.findByIdAndRemove(id)
@@ -51,7 +50,7 @@ class controlador {
     static async livrosFiltrados(req, res) {
         const idUserToken = req.headers.authorization
         const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
-        collection = criaColecaoUser(idUser)
+        const collection = criaColecaoUser(idUser)
         let query = req.query.query
 
         let expressao = new RegExp(query, "i")
@@ -65,10 +64,10 @@ class controlador {
     static async atualizarLivro(req, res) {
         const idUserToken = req.headers.authorization
         const idUser = jsonwebtoken.verify(idUserToken, process.env.CHAVE_TOKEN).id
-        collection = criaColecaoUser(idUser)
+        const collection = criaColecaoUser(idUser)
         let id = req.params.id
         let atualizacoes = req.body
-        console.log(atualizacoes)
+        // console.log(atualizacoes)
         // let autorNovo = req.body.autorNovo
     try {
         await collection.findOneAndUpdate({_id: id}, atualizacoes)
@@ -137,7 +136,7 @@ class controlador {
                 const token = jsonwebtoken.sign({
                     id: user._id
                 }, process.env.CHAVE_TOKEN)
-                // const colecao = criaColecaoUser(user._id)
+                // this.colecao = criaColecaoUser(user._id)
                 res.status(200).json({token: token})
             } else {
                 console.log("erro")
