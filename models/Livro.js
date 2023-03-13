@@ -21,7 +21,8 @@ function criaColecaoUser(idUser) { //precisa ser definido so uma vez
         "id": {type:String},
         "titulo": {type: String, required: true},
         "autor": {type: String, required: true},
-        "genero": {type: String, required: true}
+        "genero": {type: String, required: true},
+        "img": {type: String}
     })
     mongoose.models = {} // para impedir erro de subscrição do model existente
     //criacao de colecao e definicao de schema p ele

@@ -13,11 +13,13 @@ var btn = document.querySelector("#button-adicionar-livro")
 var select = document.querySelector("#genero-input-menu")
 var inputTitulo = document.querySelector("#titulo-input-menu")
 var inputAutor = document.querySelector("#autor-input-menu")
+const inputLinkImg = document.querySelector("#input-link-imagem")
 
 btn.addEventListener("click", async ()=>{
     var titulo = inputTitulo.value
     var autor = inputAutor.value
     var genero = select[select.selectedIndex].value
+    var img = inputLinkImg.value
     const tokenGuardad = JSON.parse(localStorage.getItem("authorization"))
     await fetch("http://localhost:3000/livros", {
         method: "POST",
@@ -25,8 +27,10 @@ btn.addEventListener("click", async ()=>{
         body: JSON.stringify({
                 "titulo": titulo,
                 "autor": autor,
-                "genero": genero
+                "genero": genero,
+                "img": img
                 })
     })
     reiniciarLivrosSite() //substituir esse metodo por append de livro na area de livro
 })
+
