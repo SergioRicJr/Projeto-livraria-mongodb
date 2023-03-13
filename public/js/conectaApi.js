@@ -13,7 +13,7 @@ class conexaoApi {
     }
 
     static async livrosFiltrados(pesquisa) {
-        const tokenGuardad = JSON.parse(localStorage.getItem("authorization"))
+        
         const con = await fetch(`http://localhost:3000/pesquisa?query=${pesquisa}`,{
             headers: {"authorization": tokenGuardad.token}
         })
