@@ -78,9 +78,8 @@ main {
     padding-bottom: 0;
     grid-gap: 15px; 
     position: relative;
-    /* height: 90%; */
+    min-height: 90%;
 }
-
 
 .Livro {
     width: 200px;
