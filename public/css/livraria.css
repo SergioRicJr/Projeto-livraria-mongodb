@@ -47,7 +47,7 @@ h1 {
     align-items: center;
     width: 33%;
     height: 100%;
-    margin-left: 6.4%;
+    padding-left: 6.4%;
 }
 
 #area-pesq {
@@ -69,15 +69,16 @@ input {
 }
 
 main {
-    flex-wrap: wrap;
-    display: flex;
-    /* justify-content: center; */
+    display: grid;
+    
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 200px);
     padding: 6.4%;
     padding-top: 3%;
     padding-bottom: 0;
-    gap: 15px;
+    grid-gap: 15px; 
     position: relative;
-    height: 90%;
+    /* height: 90%; */
 }
 
 
@@ -146,6 +147,7 @@ h2 {
 }
 
 .card-livro {
+    background-color: aqua;
     display: flex;
     /* flex: 1; */
     flex-direction: column;
